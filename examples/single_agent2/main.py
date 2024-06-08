@@ -1,9 +1,8 @@
 import asyncio
-from asyncio.log import logger
 
+from simple_coder import SimpleCoder
+from metagpt.logs import logger
 from metagpt.context import Context
-
-from examples.single_agent2.simple_coder import SimpleCoder
 
 async def main():
     msg = "write a function that calculates the sum of a list"
@@ -13,4 +12,5 @@ async def main():
     result = await role.run(msg)
     logger.info(result)
 
-asyncio.run(main)
+if __name__ == '__main__':
+    asyncio.run(main())

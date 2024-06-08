@@ -1,7 +1,7 @@
-from asyncio.log import logger
+from simple_write_code import SimpleWriteCode
+from metagpt.logs import logger
 from metagpt.roles import Role
-
-from examples.single_agent2.simple_write_code import SimpleWriteCode
+from metagpt.schema import Message
 
 class SimpleCoder(Role):
     name: str = "Alice"
