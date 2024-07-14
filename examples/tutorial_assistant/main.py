@@ -1,6 +1,16 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+"""
+@Time    : 2024/7/14 21:01
+@Author  : yusingh
+@File    : main.py
+Tutorial Asistant with MetaGPT(fitting v0.8.1)
+"""
+
 from datetime import datetime
 from typing import Dict
 import asyncio
+import json
 from metagpt.actions.write_tutorial import WriteDirectory, WriteContent
 from metagpt.const import TUTORIAL_PATH
 from metagpt.logs import logger
@@ -129,7 +139,7 @@ class TutorialAssistant(Role):
             self._set_state(0)
             return
 
-        if self.rc.state + 1 < len(self._states):
+        if self.rc.state + 1 < len(self.states):
             self._set_state(self.rc.state + 1)
         else:
             self.rc.todo = None
@@ -149,8 +159,13 @@ class TutorialAssistant(Role):
         self.total_content += f"# {self.main_title}"
         actions = list()
         for first_dir in titles.get("directory"):
+            if not isinstance(first_dir, str):
+                cur_directory = json.dumps(first_dir)
+            else:
+                cur_directory = first_dir
+            
             actions.append(WriteContent(
-                language=self.language, directory=first_dir))
+                language=self.language, directory=cur_directory))
             key = list(first_dir.keys())[0]
             directory += f"- {key}\n"
             for second_dir in first_dir[key]:
