@@ -1,7 +1,9 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
 """
-Filename: MetaGPT/examples/build_customized_multi_agents.py
-Created Date: Wednesday, November 15th 2023, 7:12:39 pm
-Author: garylin2099
+@Time    : 2024/7/10 20:02
+@Author  : yusingh
+@File    : main.py
 """
 import re
 
