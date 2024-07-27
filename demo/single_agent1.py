@@ -1,4 +1,4 @@
-# 可导入任何角色，初始化它，用一个开始的消息运行它，完成！
+# 可导入任何角色，初始化它，用一个开始的消息运行它
 import asyncio
 
 from metagpt.context import Context
